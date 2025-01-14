@@ -1,0 +1,106 @@
+
+*****************HULK*****************************
+[root@hulk ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 10    PITR_WMS                       running 192.168.102.201
+ 27    centos7.0-docker               running 172.24.1.130
+ 80    Notificaciones_Zextras         running 172.24.1.97
+ 92    Tms3_2019                      running 172.24.1.125
+ 194   honeydrive                     running 
+ 214   FreePBX_2024                   running 192.168.102.150
+ 215   Win7_FacElec                   running 192.168.236.40
+ 221   WMS_PRB                        running 192.168.102.8
+ 224   Ciclope-Zentyal6               running 192.168.0.220
+ -     WIKI                           shut off
+ -     win10-servercam                shut off
+
+
+
+
+*******************HEISSENBERG**************************
+[root@heisenberg ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 1     centos7.0-docker               running 172.24.1.122
+ 2     wind10-camaras-new             running 172.24.1.54
+ 3     Wms_Centos7_2019_nd2           running 192.168.102.7
+ 4     PITR_Zeus                      shut off
+ 6     FW_BKDOOR2023                  running 172.24.1.3
+ 7     FW-INHOUSE                     running 192.168.0.55
+ 8     centos7-Nodo-Docker2           running 172.24.1.132
+ 9     ReplicaBD-WMS-199              running 192.168.102.52
+ 10    Win_TICS                       running 192.168.24.53
+ 20    OL-PITR                        running 192.168.102.200
+ 16    FW_INT3                        shut off 192.168.0.19
+ -     winserver_prb                  shut off
+ -     Wsus-2016                      shut off
+
+
+
+
+***************CHAPULIN.************************
+[root@chapulin ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 1     centos7.0-docker2              running 172.24.1.127
+ 3     centos_Postgres14_Repl         running 192.168.102.125
+ 7     Replica-Zeus                   running 192.168.102.24
+ 12    Replica-p10-pr                 running 192.168.102.199
+ 13    correo_2020                    running 172.24.1.98
+ 59    centos7.0_DB_Cluster_Galera2   running 192.168.102.85
+ 60    centos7_NdGalera               running 192.168.102.44
+ 66    centos7.0-docker               running 172.24.1.123
+ 133   CAccesos2023                   running 192.168.104.89
+ 153   FW_EXT2023                     running
+ 154   Windows2016-bk                 running 192.168.0.109
+ 156   centos7.0-Pruebas              running 192.168.24.45
+ 157   win10-Servercam                running 172.24.1.155
+ -     Centos_Mariadb_Pruebas         shut off
+ -     Tms3_2019                      shut off
+ -     Wms_Centos7_2023               shut off
+
+
+
+
+
+***************************THING*************************
+[root@thing ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 1     Nextcloud17                    running 172.24.1.99
+ 3     Postfix_impresoras             running 172.24.1.56
+ 4     ZIMBRA-centos7.0_Backup85      running 172.24.1.85
+ 15    Mongo_GPS                      running 172.26.2.45
+ -     Faro_MCT                       shut off
+
+
+
+
+**********************KALIMAN***************************
+
+ Id    Nombre                         Estado
+----------------------------------------------------
+ 2     centos7.0_DB_Cluster_Galera1   ejecutando 192.168.102.80
+ 6     Zeus-Replica                   ejecutando 192.168.102.29
+ 8     Docker_centos7.0               ejecutando 172,24,1,124
+ 9     Centos8_nd3Docker              ejecutando 172.24.2.26
+ 22    Git_desarrollo                 ejecutando 192.168.102.31
+ 53    Zextras_Ubuntu                 ejecutando 172.24.1.88
+ 54    FW_INT_230                     ejecutando 192.168.0.230
+ 55    centos_Postgres14              ejecutando 192.168.102.124
+ 58    FreePBX                        ejecutando 192.168.102.150
+ 60    centos7_GaleraNd               ejecutando 192.168.102.46
+ 70    OL-Docker-DNS                  ejecutando 172.24.1.67
+ 75    Wsus-2016                      ejecutando 192.168.0.237
+ 76    OL-RKE-ControlPlane            ejecutando 172.24.1.70
+ 77    OL-RKE-Node1                   ejecutando 172.24.1.71
+ 78    OL-RKE-Node2                   ejecutando 172.24.1.72
+ 79    OL-RKE-Node3                   ejecutando 172.24.1.73
+ 80    OL-Rancher                     ejecutando 172.24.1.75
+ -     FW_CAMARAS2024                 apagado
+ -     FW_OPENVPN                     apagado
+ -     NdDockerdebian10               apagado
+ -     PlantillaOrcle                 apagado
+ -     Zextras2024                    apagado
+ -     Zextras_032024                 apagado
