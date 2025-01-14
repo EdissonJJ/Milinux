@@ -1,0 +1,105 @@
+*********** HIPERVISORES, MAQUINAS VIRTUALES**********
+
+***************CHAPULIN.10.25.25.9************************
+[root@chapulin ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 1     centos7.0-docker2              running 172.24.1.127
+ 3     centos_Postgres14_Repl         running 192.168.102.125
+ 7     Replica-Zeus                   running 192.168.102.24
+ 12    Replica-p10-pr                 running 192.168.102.199
+ 59    centos7.0_DB_Cluster_Galera2   running 192.168.102.85
+ 60    centos7_NdGalera               running 192.168.102.44
+ 66    centos7.0-docker               running 172.24.1.123
+ 133   CAccesos2023 - Windows         running 192.168.104.89 
+ 157   win10-Servercam - Windows      running 172.24.1.155
+ 164   OL-Docker1                     running 172.24.1.77
+ 165   correo_2020                    running 172.24.1.98
+ 169   Windows2016-bk - Windows       running 192.168.0.109 / 120 para que se conecten al cliente siigo desde a fuera por vpn
+ 174   RKEOL_CPLANE2                  running 172.24.1.71
+ 176   RKEOL_ND2                      running 172.24.1.73
+ -     Tms3_2019                      shut off
+ -     Wms_Centos7_2023               shut off
+
+
+*******************HEISSENBERG 10.25.25.6**************************
+[root@heisenberg ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 1     centos7.0-docker               running 172.24.1.122
+ 3     Wms_Centos7_2019_nd2           running 192.168.102.7
+ 6     FW_BKDOOR2023                  running 172.24.1.3
+ 8     centos7-Nodo-Docker2           running 172.24.1.132
+ 9     ReplicaBD-WMS-199              running 192.168.102.52
+ 20    OL-PITR                        running 192.168.102.202
+ 24    OL-Docker1                     running 172.24.1.69
+ 25    Win_TICS - Windows             running 192.168.24.53
+ 28    wind10-camaras-new - Windows   running 172.24.1.54
+ 32    RKEOL_ND3                      running 172.24.1.74
+ -     winserver_prb                  shut off
+ -     Wsus-2016                      shut off
+
+
+*****************HULK 10.25.25.3*****************************
+[root@hulk ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 10    PITR_WMS                       running 192.168.102.201
+ 27    centos7.0-docker               running 172.24.1.130
+ 80    Notificaciones_Zextras         running 172.24.1.97
+ 92    Tms3_2019                      running 172.24.1.125
+ 194   honeydrive                     running
+ 215   Win7_FacElec - Windows         running 192.168.236.40
+ 221   WMS_PRB                        running 192.168.102.8
+ 224   Ciclope-Zentyal6               running 192.168.0.220
+ 225   OL-Docker                      running 172.24.1.68
+ 226   OLRKE_PROD_CPLANE              running 172.24.1.75
+ -     FreePBX_2024                   shut off
+ -     WIKI                           shut off
+ -     win10-servercam                shut off
+
+
+
+***************************THING 10.25.25.2*************************
+[root@thing ~]# virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 1     Nextcloud17                    running 172.24.1.99
+ 4     ZIMBRA-centos7.0_Backup85      running 172.24.1.85
+
+
+
+
+**********************KALIMAN 10.25.25.11***************************
+ Id    Nombre                         Estado
+
+
+ -     PlantillaOrcle                 shut off
+----------------------------------------------------
+ 2     centos7.0_DB_Cluster_Galera1   running 192.168.102.80
+ 6     Zeus-Replica                   running 192.168.102.29
+ 8     Docker_centos7.0               running 172.24.1.124  
+ 9     Centos8_nd3Docker              running 172.24.1.26
+ 53    Zextras_Ubuntu                 running 172.24.1.88
+ 54    FW_INT_230                     running 192.168.0.230
+ 55    centos_Postgres14              running 192.168.102.124
+ 58    FreePBX                        running 192.168.102.150
+ 70    OL-Docker-DNS                  running 172.24.1.67
+ 75    Wsus-2016                      running 192.168.0.237
+ 76    OL-RKE-ControlPlane            running 172.24.1.70
+ 77    OL-RKE-Node1                   running 172.24.1.71
+ 78    OL-RKE-Node2                   running 172.24.1.72
+ 79    OL-RKE-Node3                   running 172.24.1.73
+ 80    OL-Rancher                     running 172.24.1.75
+ 86    WindServerRDP                  running 192.168.0.109
+ 92    OL-Postgres1                   running 192.168.102.13
+ 94    OL-Edicsonpruebas              running 192.168.24.59
+ 88    OL-devops-tools                running 172.24.1.30
+ 22    Git_desarrollo                 running 192.168.102.31
+ 117   OLRKE_PROD_CPLANE              running 172.24.1.70
+ 119   OLRKE_PROD_ND1                 running 172.24.1.72
+ 121   OL-MariaDB1                    running
+ -     OL-Ollama                      shut off
+ -     PlantillaOrcle                 shut off 192.168.24.58
+
+
