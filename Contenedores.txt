@@ -1,0 +1,283 @@
+//////////////////////////////////////////////////////////////////////////////////-----CHAPULIN------//////////////////////////////////////////////////////////////////////////////////
+******************************************************************1. centos7.0-docker 172.24.1.123*************************************
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS        PORTS                                                                           NAMES
+f1c7df0896b5   checkmk/check-mk-raw:2.0.0-latest   "/docker-entrypoint.…"   32 hours ago    Up 32 hours (healthy)                                                                                   monitoring3     192.168.0.110 - 172.16.194.10 (Produccion)
+29158d34b3cb   switrans34                          "/bin/sh -c /inicia_…"   5 days ago      Up 5 days               172.24.1.123:8001->80/tcp                                                       switrans8001    172.24.1.123:8001 (Trafico TMS)
+3195e9501ce8   wso2-v2                             "/bin/bash"              6 weeks ago     Up 6 weeks                                                                                              wso2_is         172.24.1.142 (Este IS habla LDAP de correo, y lo consume prefactura y calidad)
+5e7ba4a8e710   opengts-deb-v2                      "/bin/sh -c 'sh /usr…"   3 months ago    Up 3 months                                                                                             opengts-deb-49   (consumos por websocket, recibe trafico de gps lo que envian las jointech, consumo por websocket, este solo recibe trafico, lo procesa y lo envia a evendata)
+ 192.168.102.49   galera_db2                          "/usr/sbin/init /usr…"   4 months ago    Up 4 months                                                                                             mariadb         192.168.102.101 (BD de helpdesk)
+048f4d0bbe11   calidad2022                         "/bin/sh -c '/usr/lo…"   6 months ago    Up 6 months             22/tcp, 172.24.1.123:8082->80/tcp                                               pagSGO8082      172.24.1.123:8082 (SGO de replica, contingencia)
+fad488a89361   glpi_v2                             "/usr/sbin/init /usr…"   7 months ago    Up 7 months                                                                                             glpi_v1         172.24.1.93 (GLPI Produccion)
+a29b43d24515   php7_py_ssh_v5                      "/usr/sbin/init /usr…"   9 months ago    Up 9 months             172.24.1.123:21->21/tcp, 172.24.1.123:8522->22/tcp, 172.24.1.123:8500->80/tcp   php7_py_ssh8500 172.24.1.123:8500 (Ejecuta los crontab de php7 y python 3.8, produccion, postfix notificaciones.mct y recibe con ssh 8522 o 8523)
+df595598f1c2   portainer/agent:2.15.1              "./agent"                9 months ago    Up 9 months             0.0.0.0:9001->9001/tcp, :::9001->9001/tcp                                       portainer_agent 172.24.1.123:8002
+6356850c7c2a   calidad2022                         "/bin/sh -c '/usr/lo…"   11 months ago   Up 9 months             172.24.1.123:8422->22/tcp, 172.24.1.123:8002->80/tcp                            pagcalidad8002  172.24.1.123:8002 (Calidad replica, contingecnia)
+513768be3767   c4fd728fca33                        "/usr/sbin/init /usr…"   13 months ago   Up 9 months             21/tcp, 172.24.1.123:8523->22/tcp, 172.24.1.123:8501->80/tcp                    php7_py_ssh8501 172.24.1.123:8501 (Ejecuta los crontab de php7 y python 3.8, produccion, postfix correo.mct)
+ac0079744354   382879f753ab                        "/usr/sbin/init /usr…"   14 months ago   Up 9 months             21/tcp, 172.24.1.123:8542->22/tcp, 172.24.1.123:8540->80/tcp                    php7_codsw_py   172.24.1.123:8540
+reportAPP 
+
+
+******************************************************************2. centos7.0-docker2 172.24.1.127********************************************
+CONTAINER ID   IMAGE                         COMMAND                  CREATED         STATUS                  PORTS                         NAMES
+7a84d14fa7ed   wso2-v2                       "/bin/bash"              5 days ago      Up 5 days                                              wso2_actuador   192.168.102.212 (bus para integraciones con clientes, triggers))
+00af19e19431   waf_v2                        "bash"                   5 weeks ago     Up 5 weeks                                             waf_wso2        172.24.1.8 (Waf para el bus 211 y 11)
+cd9aa160e418   adolfintel/speedtest:latest   "docker-php-entrypoi…"   3 months ago    Up 3 months              0.0.0.0:8096->80/tcp          speedtest       172.24.1.127:8096 (para validar velocidad de internet, Eliminar)
+e66afb0336e4   node_red_v2                   "./entrypoint.sh"        3 months ago    Up 3 months (healthy)                                  node_red3       172.24.1.41 (Flujo de dasarollo GPS - IOT)
+07414c331094   node_red_v2                   "./entrypoint.sh"        3 months ago    Up 3 months (healthy)                                  node_red2       172.24.1.52 (Desarrollan IOT para las fuentes)
+8f6a6f595a6f   waf_v2                        "bash"                   11 months ago   Up 11 months                                           waf2py_prb      172.24.1.6 - 172.24.1.22 (Para los servidores de correo 1 y 2 )
+890f65c882b5   nodered/node-red              "./entrypoint.sh"        13 months ago   Up 10 months (healthy)                                 node_red        172.24.1.51 (Desarrollan IOT para las fuentes)
+bcba844a10df   portainer/agent:2.15.1        "./agent"                15 months ago   Up 15 months             172.24.1.127:9001->9001/tcp   portainer_agent
+
+*******************************************************************3 OL-Docker1 172.24.1.77 ******************************************
+CONTAINER ID   IMAGE                                         COMMAND                  CREATED        STATUS        PORTS     NAMES
+4b74a52f599e   harbor.mct.com.co/dnsinterno/dns_interno:v1   "docker-entrypoint.s…"   6 days ago   Up 6 days             cdnsinterno49  172.24.1.49
+009c2e3e9bea   harbor.mct.com.co/dns/dns-master              "docker-entrypoint.s…"   6 days ago   Up 6 days             cdnsexterno36  172.24.1.36
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////-----HEISSENBER------//////////////////////////////////////////////////////////////////////////////////
+
+******************************************************************3. centos7.0-docker 172.24.1.122*****************************************
+CONTAINER ID   IMAGE              COMMAND                  CREATED         STATUS                PORTS                                                  NAMES
+59c155ddbf1f   opengts-deb-v2     "/bin/sh -c 'sh /usr…"   2 hours ago     Up 2 hours                                                                    opengts-deb-v1    192.168.102.48 (opengts de produccion)
+50708daba5aa   switrans34         "/bin/sh -c /inicia_…"   5 hours ago     Up 5 hours             172.24.1.122:8010->80/tcp                              switrans8010      172.24.1.122:8010 (tms2 )
+5d2e02859f0b   calidad2022        "/bin/sh -c '/usr/lo…"   5 weeks ago     Up 5 weeks             172.24.1.122:8422->22/tcp, 172.24.1.122:8002->80/tcp   pagcalidad8002    172.24.1.122:8002 (calidad produccion)
+e31804c4ed50   pagweb2021v1       "/bin/sh -c '/usr/lo…"   6 weeks ago     Up 6 weeks             172.24.1.122:8003->80/tcp                              pagweb8003        172.24.1.122:8003 (paginaweb produccion)
+927a0e1a0ab7   opengts-2621       "/bin/sh -c 'sh /usr…"   6 weeks ago     Up 6 weeks (healthy)   3306/tcp, 8080/tcp                                     opengts-2621      192.168.26.21 (opengts de desarrollo)
+57584e8f15c2   calidad2022        "/bin/sh -c '/usr/lo…"   2 months ago    Up 2 months            172.24.1.122:8082->80/tcp                              pagSGO8082        172.24.1.122:8082 (SGO produccion)
+54d952c0be15   openjdk            "/usr/sbin/init /usr…"   3 months ago    Up 3 months                                                                   openjdk           172.24.1.120 - 172.16.0.120 (Eliminar) (Prefactura back)
+3940fc97f10f   angular-deb        "/usr/sbin/init /usr…"   3 months ago    Up 3 months                                                                   angularcentos     172.24.1.119 (Eliminar) (Prefactura front)
+c86352c9bff9   portainer/agent    "./agent"                3 months ago    Up 3 months            172.24.1.122:9001->9001/tcp                            portainer_agent
+ce352b8bb296   pagweb2021v1       "/bin/sh -c '/usr/lo…"   4 months ago    Up 3 months            172.24.1.122:8053->80/tcp                              pagweb2023        172.24.1.122:8053 (pagina web parece que no se utiliza, Eliminar )
+23ebb13742c4   nominatim-v1:3.7   "/bin/sh -c /app/sta…"   17 months ago   Up 3 months                                                                   nominatim_desa    192.168.26.50 (Mapas para switrans, Pregunata sebastian)
+
+
+
+****************************************************OL-PITR  192.168.102.200*******************************************************
+CONTAINER ID   IMAGE                   COMMAND                  CREATED       STATUS       PORTS                                       NAMES
+dd3ec49fd858   postgres:10.23-alpine   "docker-entrypoint.s…"   5 weeks ago   Up 5 weeks   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   restore
+
+
+
+
+******************************************************************4. centos7-Nodo-Docker2 172.24.1.132*************************************
+CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS       PORTS                         NAMES
+33873bb6cc6e   waf_v2                          "bash"                   3 days ago      Up 3 days                                  waf2py_v2             172.24.1.10 (contingencia del que tiene en kaliman 2 waf 172.24.1.11)
+39e2eee9e2de   switrans34_v2                   "/bin/sh -c /inicia_…"   3 weeks ago     Up 3 weeks                                 switrans141_crontabs  172.24.1.141 (son solo para los crontab que ejecutan switrans, )
+4ceec77bb474   sameersbn/bind:9.9.5-20170129   "/sbin/entrypoint.sh…"   7 weeks ago     Up 7 weeks                                 dns_45                172.24.1.45 (dns de los servidores actuales)
+90985d21dc63   openjdk                         "/usr/sbin/init /usr…"   7 weeks ago     Up 7 weeks                                 openjdk_pr            172.24.1.152
+4cbe78059aac   angular-deb                     "/usr/sbin/init /usr…"   7 weeks ago     Up 7 weeks                                 angular_prb           172.24.1.151
+23711efd8c13   centos_ftp_v1                   "/usr/sbin/init /usr…"   7 weeks ago     Up 7 weeks                                 Centos_ftp            172.24.1.13 (Servidor para subir las imagenes de la app digitalizacion de documentos por sftp)
+ea4eef642c38   portainer/agent:2.15.1          "./agent"                7 weeks ago     Up 7 weeks   172.24.1.132:9001->9001/tcp   portainer_agent
+efc834d091d2   sameersbn/bind:9.9.5-20170129   "/sbin/entrypoint.sh…"   7 weeks ago     Up 7 weeks                                 dns_46                172.24.1.46
+93415737651f   openproject/community:11        "./docker/prod/entry…"   5 months ago    Up 7 weeks                                 openproject80         192.168.102.107 (openproject tics)
+7a18e2b80641   nominatim                       "/bin/sh -c /app/sta…"   17 months ago   Up 7 weeks                                 nominatim             192.168.102.213 (mapa de switrans)
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////-----HULK------//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+********************************************************************5. centos7.0-docker 172.24.1.130*********************************************
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                                       NAMES
+5a6a0fd3ee95   conaccesos_v2            "/usr/sbin/init /usr…"   10 days ago     Up 10 days                                                 software_control_acceso  172.24.1.135 (Sw control de acceso el de produccion)
+05f81720699b   moodle_v2                "httpd-foreground"       3 weeks ago     Up 3 weeks                                                 moodle                   172.24.1.27 (moodle de produccion)
+409f13ee8f99   glpi_v2                  "/usr/sbin/init /usr…"   2 months ago    Up 2 months                                                glpi_compras             172.24.1.95 (produccion)
+b82a5b6e05c5   glpi_v2                  "/usr/sbin/init /usr…"   2 months ago    Up 2 months                                                glpi_cip                 172.24.1.92 (Produccion)
+01ce3006111b   nodejs_v1                "/usr/sbin/init /usr…"   2 months ago    Up 2 months                                                is_pocketbase            172.24.1.134 (IS autentica control de acceso)
+889f5c176c86   switrans34               "/bin/sh -c /inicia_…"   7 months ago    Up 7 months                                                malkuth8095              172.24.1.121 (Switrans viejo, 121, la BD esta en postgres varios)
+f4f8a1ea228d   glpi_v2                  "/usr/sbin/init /usr…"   9 months ago    Up 9 months                                                glpi_v1                  172.24.1.193 (Pruebas Soporte, Eliminar)
+18359e6466ec   portainer/agent:2.15.1   "./agent"                19 months ago   Up 19 months   0.0.0.0:9001->9001/tcp, :::9001->9001/tcp   portainer_agent 
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////-----KALIMAN------////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+*******************************************************************7. Centos8_nd3Docker 172.24.1.26***************************************
+CONTAINER ID   IMAGE             COMMAND                  CREATED       STATUS       PORTS                        NAMES
+ff138da226de   pentaho9          "sh /opt/pentaho/pen…"   4 hours ago   Up 4 hours                                pentaho9            192.168.102.55 (Pentaho produccio)
+d402ee885898   wso2_211-v4       "/bin/bash"              5 hours ago   Up 5 hours                                wso2_211-v1         192.168.102.211 (Bus backend )
+b1530dd7f42c   wso2-v1           "/bin/bash"              2 days ago    Up 2 days                                 wso2-v1             192.168.102.11 (Bus principal produccion)
+7c97744e338f   waf_v2            "bash"                   7 days ago    Up 7 days                                 waf2py_v2           172.24.1.7 -172.24.1.11 - 172.24.1.12 - 172.24.1.9 (Produccion, principal de sitios web)
+35ac3bc366b7   openjdk           "/usr/sbin/init /usr…"   8 days ago    Up 8 days                                 openjdk_prefactura  172.24.1.172 -172.16.0.172 (back, Produccion)
+b243aa900bfe   angular-deb       "/usr/sbin/init /usr…"   4 weeks ago   Up 4 weeks                                angular_prefactura  172.24.1.171  (front, produccion)
+f7bda81c850c   portainer/agent   "./agent"                5 weeks ago   Up 4 weeks   172.24.1.26:9001->9001/tcp   portainer_agent 
+
+
+
+
+
+********************************************************************8. centos_Postgres14 172.24.1.124****************************************
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                         NAMES
+c3df815d2d4f        switrans34               "/bin/sh -c /inici..."   4 hours ago         Up 4 hours          172.24.1.124:8010->80/tcp     switrans8010    172.24.1.124:8010 (TMS 1)
+8a6e0cb1a0ae        psql_deb_v2              "bash"                   4 weeks ago         Up 4 weeks                                        pgsql_tms_prb   192.168.102.23 (BD de desarrollo)
+883398b3c0dc        portainer/agent:2.15.1   "./agent"                6 months ago        Up 4 weeks          172.24.1.124:9001->9001/tcp   portainer_agent 
+
+
+
+
+********************************************************************8. OL-Docker-DNS 172.24.1.67****************************************
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED      STATUS      PORTS                    NAMES
+a1d15d13d471   harbor.mct.com.co/dnsinterno/dns_interno:v1   "docker-entrypoint.s…"   15 hours ago   Up 15 hours                                      cdnsinterno48         172.24.1.48
+def17af6d5f3   harbor.mct.com.co/dns/dns-master:v2           "docker-entrypoint.s…"   15 hours ago   Up 15 hours                                      cdnsexterno35         172.24.1.35
+96863b174cb7   iapertura_candanos                            "sh ./entrypoint.sh"     41 hours ago   Up 41 hours   0.0.0.0:5000-5001->5000-5001/tcp   aperturacandados      172.24.1.67:8080
+cce69bb1a232   httpd                                         "httpd-foreground"       5 days ago     Up 5 days     0.0.0.0:80->80/tcp                 httpd                 172.24.1.67:8080
+c3b4a503bb2e   back_mantenimientogps                         "java -jar /app.jar"     5 days ago     Up 5 days     0.0.0.0:8081->8081/tcp             cbackmantenimientogps 172.24.1.67:8080
+
+
+
+********************************************************************OL-devops-tools 172.24.1.30****************************************
+CONTAINER ID   IMAGE                                COMMAND                  CREATED        STATUS                 PORTS                                                                            NAMES
+1bc0d23d2416   grafana/grafana-enterprise           "/run.sh"                23 hours ago   Up 23 hours            0.0.0.0:3000->3000/tcp, :::3000->3000/tcp                                        grafana
+cd7d3b270dc8   goharbor/nginx-photon:v2.9.4         "nginx -g 'daemon of…"   2 weeks ago    Up 2 weeks (healthy)   0.0.0.0:80->8080/tcp, :::80->8080/tcp, 0.0.0.0:443->8443/tcp, :::443->8443/tcp   nginx
+480dff8f165f   goharbor/harbor-jobservice:v2.9.4    "/harbor/entrypoint.…"   2 weeks ago    Up 2 weeks (healthy)                                                                                    harbor-jobservice
+5700b02ca975   goharbor/harbor-core:v2.9.4          "/harbor/entrypoint.…"   2 weeks ago    Up 2 weeks (healthy)                                                                                    harbor-core
+b26ac87983b1   goharbor/harbor-portal:v2.9.4        "nginx -g 'daemon of…"   2 weeks ago    Up 2 weeks (healthy)                                                                                    harbor-portal
+17511c87b6fd   goharbor/registry-photon:v2.9.4      "/home/harbor/entryp…"   2 weeks ago    Up 2 weeks (healthy)                                                                                    registry
+e8bb954c9e59   goharbor/harbor-registryctl:v2.9.4   "/home/harbor/start.…"   2 weeks ago    Up 2 weeks (healthy)                                                                                    registryctl
+8fe5742f4e8c   goharbor/redis-photon:v2.9.4         "redis-server /etc/r…"   2 weeks ago    Up 2 weeks (healthy)                                                                                    redis
+aa28a0bb59c3   goharbor/harbor-db:v2.9.4            "/docker-entrypoint.…"   2 weeks ago    Up 2 weeks (healthy)                                                                                    harbor-db
+c4cbecd06ed3   goharbor/harbor-log:v2.9.4           "/bin/sh -c /usr/loc…"   2 weeks ago    Up 2 weeks (healthy)   127.0.0.1:1514->10514/tcp                                                        harbor-log
+
+
+
+
+
+********************************************************************OL-Postgres1 192.168.102.13****************************************
+CONTAINER ID   IMAGE                                   COMMAND                  CREATED        STATUS        PORTS                                                                                                                             NAMES
+b3bc0b797124   postgres-decoderbufs:10.23              "docker-entrypoint.s…"   18 hours ago   Up 18 hours   0.0.0.0:5433->5432/tcp, :::5433->5432/tcp                                                                                         psqlnode2
+e822cb3d570c   quay.io/debezium/connect:2.1            "/docker-entrypoint.…"   18 hours ago   Up 18 hours   0.0.0.0:8083->8083/tcp, :::8083->8083/tcp, 9092/tcp                                                                               dockerfiles-connect-1
+306e5a202049   quay.io/debezium/kafka:2.1              "/docker-entrypoint.…"   18 hours ago   Up 18 hours   0.0.0.0:9092->9092/tcp, :::9092->9092/tcp                                                                                         dockerfiles-kafka-1
+5d0cd6057a87   quay.io/debezium/example-postgres:2.1   "docker-entrypoint.s…"   18 hours ago   Up 18 hours   0.0.0.0:5435->5432/tcp, :::5435->5432/tcp                                                                                         dockerfiles-postgres-1
+cde9b13c81f2   quay.io/debezium/zookeeper:2.1          "/docker-entrypoint.…"   18 hours ago   Up 18 hours   0.0.0.0:2181->2181/tcp, :::2181->2181/tcp, 0.0.0.0:2888->2888/tcp, :::2888->2888/tcp, 0.0.0.0:3888->3888/tcp, :::3888->3888/tcp   dockerfiles-zookeeper-1
+ecaf89785258   quay.io/debezium/example-mysql:2.5      "docker-entrypoint.s…"   19 hours ago   Up 19 hours   0.0.0.0:3306->3306/tcp, :::3306->3306/tcp, 33060/tcp                                                                              mysql
+245e61d81b1a   postgres:10.23-alpine                   "docker-entrypoint.s…"   20 hours ago   Up 20 hours   0.0.0.0:5434->5432/tcp, :::5434->5432/tcp                                                                                         psqlnode3
+fa103b753304   postgres:10.23-alpine                   "docker-entrypoint.s…"   9 days ago     Up 9 days     0.0.0.0:5432->5432/tcp, :::5432->5432/tcp                                                                                         psqlnode1
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////-----JOCKER------//////////////////////////////////////////////////////////////////
+
+********************************************************************9. Jocker 10.25.25.12 / 192.168.102.21 / 192.168.102.200  ****************************************
+CONTAINER ID   IMAGE                               COMMAND                  CREATED        STATUS                  PORTS                                       NAMES
+4b5def77f699   conaccesos_v2                         "/usr/sbin/init /usr…"   10 days ago    Up 10 days                                                         con_accesos        
+7aae67c1f554   harbor.mct.com.co/dns/dns-master:v2   "docker-entrypoint.s…"   3 weeks ago    Up 3 weeks                                                         bind9_dns          172.24.1.36
+683be6b8ed65   checkmk/check-mk-raw:2.0.0-latest     "/docker-entrypoint.…"   4 weeks ago    Up 4 weeks (healthy)                                               monitoring3       
+00ac28df5a17   pgsql_14                              "/usr/sbin/init /usr…"   2 months ago   Up 2 months                                                        pgsql_14           
+e02052893343   wso2-v1                               "/bin/bash"              7 months ago   Up 7 months                                                        wso2_is_pdes       172.16.37.142
+07cb3ac36a2c   wso2-v1                               "/bin/bash"              7 months ago   Up 7 months                                                        wso2-pdes          172.16.37.10
+ed1d621d03b8   psql_deb_v2                           "bash"                   7 months ago   Up 7 months                                                        pgsql_tms_prepo    
+5291c79bc5e4   wso2-v1                               "/bin/bash"              8 months ago   Up 8 months                                                        wso2_actuador_pdes 172.16.37.212
+d9334ca2b4b5   pagweb2021v1                          "/bin/sh -c '/usr/lo…"   8 months ago   Up 8 months                                                        pagweb_prepo       
+bbf9a70f7ccd   pentaho9                              "sh /opt/pentaho/pen…"   8 months ago   Up 8 months                                                        pentaho_prepo      
+b882738d8204   opengts-deb-v1                        "/bin/sh -c 'sh /usr…"   8 months ago   Up 8 months                                                        opengts_prepo      
+b3afce463980   calidad2022                           "/bin/sh -c '/usr/lo…"   8 months ago   Up 8 months                                                        pagcalidad_prepo    
+51eefb5b2c43   calidad2022                           "/bin/sh -c '/usr/lo…"   8 months ago   Up 8 months                                                        pagSGO_prepo       
+7e1f872bd0f0   waf_v2                                "bash"                   8 months ago   Up 8 months                                                        waf2py_prepo       172.16.37.7 - 172.16.37.11
+bac422da436f   php7_py_prepo                         "/usr/sbin/init /usr…"   8 months ago   Up 8 months                                                        php7_py_prepo       - 
+502296ee5036   switrans34                            "/bin/sh -c /inicia_…"   8 months ago   Up 8 months                                                        switrans_prepo     
+c2b85f97158e   switrans34                            "/bin/sh -c /inicia_…"   8 months ago   Up 8 months                                                        switrans_2550      192.168.25.50/24
+e946e2626312   portainer/agent:2.15.1                "./agent"                8 months ago   Up 8 months            0.0.0.0:9001->9001/tcp, :::9001->9001/tcp   portainer_agent
+
+
+
+4061f0a95278   calidad2022              "/bin/sh -c '/usr/lo…"   6 days ago     Up 6 days                                               pagSGO_prepo      172.16.37.21/24
+bd3caf838147   portainer/agent:2.15.1   "./agent"                8 days ago     Up 8 days   0.0.0.0:9001->9001/tcp, :::9001->9001/tcp   portainer_agent   
+d220d0662155   switrans34               "/bin/sh -c /inicia_…"   8 days ago     Up 8 days                                               switrans_prepo    172.16.37.50
+c15f54bae1a6   conaccesos_v2            "/usr/sbin/init /usr…"   2 weeks ago    Up 8 days                                               con_accesos       192.168.102.35
+00ac28df5a17   pgsql_14                 "/usr/sbin/init /usr…"   3 months ago   Up 8 days                                               pgsql_14          192.168.102.223
+ed1d621d03b8   psql_deb_v2              "bash"                   8 months ago   Up 8 days                                               pgsql_tms_prepo   172.16.37.23
+d9334ca2b4b5   pagweb2021v1             "/bin/sh -c '/usr/lo…"   9 months ago   Up 8 days                                               pagweb_prepo      172.16.37.25
+bbf9a70f7ccd   pentaho9                 "sh /opt/pentaho/pen…"   9 months ago   Up 8 days                                               pentaho_prepo     172.16.37.55
+b882738d8204   opengts-deb-v1           "/bin/sh -c 'sh /usr…"   9 months ago   Up 8 days                                               opengts_prepo     172.16.37.48
+b3afce463980   calidad2022              "/bin/sh -c '/usr/lo…"   9 months ago   Up 8 days                                               pagcalidad_prepo  172.16.37.20
+bac422da436f   php7_py_prepo            "/usr/sbin/init /usr…"   9 months ago   Up 8 days                                               php7_py_prepo     172.16.37.123
+
+
+6#nzYn6Gzjm9vc
+mariana.
+1280.Almas
+
+
+////////////////////////////////////////////////////////////////////////////-----NICOTINE------/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+*******************************************************************10. Nicotine 192.168.102.18************************************************
+CONTAINER ID   IMAGE                             COMMAND                  CREATED         STATUS        PORTS                                                              NAMES
+7bde0ddd2652   switrans34                        "/bin/sh -c /inicia_…"   46 hours ago    Up 46 hours   192.168.102.18:8008->80/tcp                                        switransd88008      192.168.102.18:8008
+d5a1863b45b7   sonarqube                         "/opt/sonarqube/bin/…"   6 days ago      Up 6 days                                                                        sonarqube           172.24.1.18:9000
+c90e0f27ff97   jetbrains/youtrack:2024.1.32323   "/bin/bash /run.sh"      6 days ago      Up 6 days                                                                        youtrack            192.168.102.121:8080
+be6ec5829fd2   switrans34                        "/bin/sh -c /inicia_…"   7 days ago      Up 7 days     192.168.102.18:8007->80/tcp                                        switransd78007      192.168.102.18:8007
+e1126f4705e8   switrans34                        "/bin/sh -c /inicia_…"   9 days ago      Up 9 days     192.168.102.18:8003->80/tcp                                        switransd38003      192.168.102.18:8003
+a205eb951d13   conaccesos_v2                     "/usr/sbin/init /usr…"   2 weeks ago     Up 2 weeks                                                                       conaccesos_des      192.168.102.3
+e20ffc8625e9   switrans34                        "/bin/sh -c /inicia_…"   4 weeks ago     Up 4 weeks    192.168.102.18:8005->80/tcp                                        switransd58005      192.168.102.18:8005
+cc2f213ef385   switrans34                        "/bin/sh -c /inicia_…"   3 months ago    Up 3 months   192.168.102.18:8004->80/tcp                                        switransd48004      192.168.102.18:8004
+180ef41c4a6e   openjdk_v2                        "/usr/sbin/init /usr…"   3 months ago    Up 3 months                                                                      openjdk_prefac_prb  192.168.102.120
+d958514144c9   nodejs_v1                         "/usr/sbin/init /usr…"   4 months ago    Up 4 months                                                                      nodejs              192.168.102.32
+ae9f06a65938   pagweb2021v1                      "/bin/sh -c '/usr/lo…"   4 months ago    Up 4 months   192.168.102.18:9098->80/tcp                                        pagwebd5He          192.168.102.18:9098
+25dd8ae8cf82   calidad2022                       "/bin/sh -c '/usr/lo…"   4 months ago    Up 4 months   192.168.102.18:9006->80/tcp                                        CalidadSGO9006      192.168.102.18:9006
+6d5fe9dff4cb   switrans34                        "/bin/sh -c /inicia_…"   5 months ago    Up 5 months   192.168.102.18:8002->80/tcp                                        switransd28002      192.168.102.18:8002
+f92e820c544f   pgsql_14                          "/usr/sbin/init /usr…"   5 months ago    Up 3 months                                                                      pgsql_14            192.168.102.224
+4426d26fb4f1   nodejs_v1                         "/usr/sbin/init /usr…"   6 months ago    Up 6 months                                                                      pocketbase          192.168.102.34:8090
+e0fb83b844ac   php7_py_ssh_v5                    "/usr/sbin/init /usr…"   7 months ago    Up 7 months   21/tcp, 192.168.102.18:8522->22/tcp, 192.168.102.18:8500->80/tcp   php7_py_ssh8500     192.168.102.18:8522/8500
+076f60ca70dd   pagweb2021v1                      "/bin/sh -c '/usr/lo…"   8 months ago    Up 8 months   192.168.102.18:9083->80/tcp                                        pagweb9083          192.168.102.18:9083
+c1d721d8be7c   pagweb2021v1                      "/bin/sh -c '/usr/lo…"   8 months ago    Up 8 months   192.168.102.18:9087->80/tcp                                        pagwebd5SE          192.168.102.18:9087
+1669421f22ea   psql_deb_v2                       "bash"                   8 months ago    Up 8 months                                                                      pgsql_varios        192.168.102.6 / 172.16.37.52
+be790b0e0245   calidad2022                       "/bin/sh -c '/usr/lo…"   8 months ago    Up 8 months   192.168.102.18:9003->80/tcp                                        CalidadSGO9003      192.168.102.18:9003
+ab7f9231080e   portainer/agent:2.15.1            "./agent"                8 months ago    Up 8 months   0.0.0.0:9001->9001/tcp, :::9001->9001/tcp                          portainer_agent     
+9d7949cec0e5   pagweb2021v1                      "/bin/sh -c '/usr/lo…"   9 months ago    Up 8 months   192.168.102.18:9085->80/tcp                                        pagwebd5H           192.168.102.18:9085
+4ba4e912b836   calidad2022                       "/bin/sh -c '/usr/lo…"   9 months ago    Up 8 months   192.168.102.18:9004->80/tcp                                        CalidadSGO9004      192.168.102.18:9004
+8ccf1ce5536f   pagweb2021v1                      "/bin/sh -c '/usr/lo…"   9 months ago    Up 8 months   192.168.102.18:9086->80/tcp                                        pagwebd6            192.168.102.18:9086
+d119676a8de6   psql_deb_v2                       "bash"                   11 months ago   Up 8 months                                                                      pgsql_tms_prepo     172.16.37.23
+382237b4d9fb   openjdk                           "/usr/sbin/init /usr…"   11 months ago   Up 8 months                                                                      openjdk_pdes        172.16.37.120
+9d2a50fe15f0   galera_db2                        "/usr/sbin/init /usr…"   14 months ago   Up 8 months                                                                      mariadb-open-ia     192.168.102.40
+ac51d2c43bc1   odoo                              "/entrypoint.sh odoo"    14 months ago   Up 8 months                                                                      odoo_th             192.168.102.238
+2385d8cee52f   postgres:13                       "docker-entrypoint.s…"   14 months ago   Up 8 months                                                                      db_th               192.168.102.237
+574de12201b8   galera_db2                        "/usr/sbin/init /usr…"   14 months ago   Up 8 months                                                                      mariadb-open-mongo  172.26.2.43
+da258c69cf1a   galera_db2                        "/usr/sbin/init /usr…"   14 months ago   Up 8 months                                                                      mariadb-open_prepo  172.16.37.244
+d21453693b32   f929699565a2                      "/bin/sh -c /inicia_…"   15 months ago   Up 8 months   192.168.102.18:8001->80/tcp                                        switransd18001      192.168.102.18:8001
+e169d9a72ed6   sameersbn/bind:9.9.5-20170129     "/sbin/entrypoint.sh…"   15 months ago   Up 8 months                                                                      dns_pdes            172.16.37.45
+d033c03ed97c   odoo                              "/entrypoint.sh odoo"    16 months ago   Up 8 months   0.0.0.0:8069->8069/tcp, :::8069->8069/tcp, 8071-8072/tcp           odoo
+8960fb594705   postgres:13                       "docker-entrypoint.s…"   16 months ago   Up 8 months   5432/tcp                                                           db
+21b291dd80e8   pagweb2021v1                      "/bin/sh -c '/usr/lo…"   17 months ago   Up 8 months   192.168.102.18:8020->80/tcp                                        pagwebprb8020      192.168.102.18:8020
+d3ad6d9daffb   pagweb2021v1                      "/bin/sh -c '/usr/lo…"   17 months ago   Up 8 months   192.168.102.18:9088->80/tcp                                        pagweb9088         192.168.102.18:9088
+9fc036bcbb34   kafka_centos_v1                   "/usr/sbin/init /usr…"   19 months ago   Up 8 months                                                                      kafka_pr           192.168.102.33
+793331e8322a   pagweb2021v1                      "/bin/sh -c '/usr/lo…"   21 months ago   Up 8 months   192.168.102.18:8021->80/tcp                                        pagwebprb8021      192.168.102.18:8021
+fb6174e4fde3   f929699565a2                      "/bin/sh -c /inicia_…"   22 months ago   Up 8 months   192.168.102.18:9005->80/tcp                                        switrans_fin       192.168.102.18:9005
+c798d7241d4d   pag_calidad                       "/bin/sh -c '/usr/lo…"   2 years ago     Up 8 months   192.168.102.18:9002->80/tcp                                        CalidadSGO9002     192.168.102.18:9002
+d86b90ee18ae   f929699565a2                      "/bin/sh -c /inicia_…"   2 years ago     Up 8 months                                                                      switransd25_102    192.168.25.102
+ 
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////-----DEADPOOL------////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+*******************************************************************11. Deadpool 192.168.102.20************************************************************
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED         STATUS                   PORTS                                                                                                                                                           NAMES
+fd9513360008   httpd                                        "httpd-foreground"       16 hours ago    Up 16 hours              0.0.0.0:80->80/tcp, :::80->80/tcp                                                                                                                                                                      apache
+da9907f399df   grafana/grafana                              "/run.sh"                17 hours ago    Up 17 hours              0.0.0.0:3000->3000/tcp, :::3000->3000/tcp                                                                                                                                                              grafana
+95733671d793   sonatype/nexus3                              "/opt/sonatype/nexus…"   6 days ago      Up 6 days                0.0.0.0:8081->8081/tcp, :::8081->8081/tcp                                                                                                                                                              sonatype
+0f052c74f928   wazuh/wazuh-kibana-odfe:4.2.5                "/bin/sh -c ./entryp…"   8 days ago      Up 8 days                0.0.0.0:443->5601/tcp, :::443->5601/tcp                                                                                                                                                                wazuh-docker_kibana_1
+8dfe0a7a9041   wazuh/wazuh-odfe:4.2.5                       "/init"                  8 days ago      Up 8 days                0.0.0.0:514->514/tcp, :::514->514/tcp, 0.0.0.0:1514-1515->1514-1515/tcp, :::1514-1515->1514-1515/tcp, 0.0.0.0:55000->55000/tcp, 0.0.0.0:514->514/udp, :::55000->55000/tcp, :::514->514/udp, 1516/tcp   wazuh-docker_wazuh_1
+0739ba9211ee   amazon/opendistro-for-elasticsearch:1.13.2   "/usr/local/bin/dock…"   8 days ago      Up 8 days                9300/tcp, 9600/tcp, 0.0.0.0:9200->9200/tcp, :::9200->9200/tcp, 9650/tcp                                                                                                                                wazuh-docker_elasticsearch_1
+7bc1b17e2d62   jetbrains/youtrack:2023.3.22912              "/bin/bash /run.sh"      2 months ago    Up 2 months                                                                                                                                                                                                                     youtrack
+8f27e0079a16   portainer/portainer-ce:latest                "/portainer"             4 months ago    Up 4 months              0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 0.0.0.0:9443->9443/tcp, :::9443->9443/tcp, 9000/tcp                                                                                                         portainer
+e2903770c5d5   ubuntu_catalyst                              "/bin/bash"              4 months ago    Up 4 months                                                                                                                                                                                                                     catalyst_soar
+a6625e9d2275   severalnines/clustercontrol                  "/entrypoint.sh"         11 months ago   Up 11 months (healthy)                                                                                                                                                                                                          clustercontrol_2
+b9b7c6125d96   heywoodlh/gophish                            "./docker/run.sh"        11 months ago   Up 11 months                                                                                                                                                                                                                    gophish
+57d83a5bcda0   mikesplain/openvas                           "/bin/sh -c /start"      13 months ago   Up 13 months                                                                                                                                                                                                                    openvas
+96e6e4996223   18671cc7779c                                 "/entrypoint.sh"         20 months ago   Up 20 months (healthy)                                                                                                                                                                                                          clustercontrol
+
+
+
